@@ -8,3 +8,8 @@ Object::Object(int x, int y) :
   velocity(0, 0),
   acceleration(0, 0) {
 }
+
+void Object::update() {
+  this->velocity.add(this->acceleration);
+  this->position.add(this->velocity);
+}

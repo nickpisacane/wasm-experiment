@@ -12,6 +12,10 @@ public:
   Vector2 position;
   Vector2 velocity;
   Vector2 acceleration;
+
+  virtual void update();
+
+  virtual bool outOfBounds(Image&) = 0;
   virtual void draw(Image&) = 0;
 };
 
