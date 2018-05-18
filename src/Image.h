@@ -12,6 +12,7 @@ public:
   uint8_t* buffer();
   uint32_t bufferLength();
   bool set(uint32_t x, uint32_t y, uint32_t rgba);
+  uint32_t get(uint32_t x, uint32_t y);
 private:
   uint32_t _width;
   uint32_t _height;

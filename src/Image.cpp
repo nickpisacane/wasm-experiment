@@ -36,10 +36,23 @@ bool Image::set(uint32_t x, uint32_t y, uint32_t rgba) {
 
   uint32_t index = 4 * (this->_width * y + x);
   
-  this->_buffer[index + 0] = rgba & 0xff000000 >> 24;
-  this->_buffer[index + 1] = rgba & 0x00ff0000 >> 16;
-  this->_buffer[index + 2] = rgba & 0x0000ff00 >> 8;
+  this->_buffer[index + 0] = (rgba & 0xff000000) >> 24;
+  this->_buffer[index + 1] = (rgba & 0x00ff0000) >> 16;
+  this->_buffer[index + 2] = (rgba & 0x0000ff00) >> 8;
   this->_buffer[index + 3] = rgba & 0x000000ff;
 
   return true;
+}
+
+uint32_t Image::get(uint32_t x, uint32_t y) {
+  if (x > this->_width || y >this->_height) {
+    return 0;
+  }
+
+  uint32_t index = 4 * (this->_width * y + x);
+
+  return this->_buffer[index + 0] << 24 |
+    this->_buffer[index + 1] << 16 |
+    this->_buffer[index + 2] << 8 |
+    this->_buffer[index + 3];
 }
