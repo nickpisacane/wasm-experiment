@@ -26,9 +26,10 @@ void Rect::draw(Image& image) {
   int y = fmax(0, this->position.y);
   int ys = this->position.y + this->height;
 
-  for (; x < xs; x++) {
-    for (; y < ys; y++) {
-      image.set(x, y, this->color);
+
+  for (int i = x; i < xs; i++) {
+    for (int j = y; j < ys; j++) {
+      image.set(i, j, this->color);
     }
   }
 }
