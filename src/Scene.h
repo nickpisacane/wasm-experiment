@@ -18,11 +18,11 @@ public:
   uint32_t width();
   uint32_t height();
 
-  void getImageData(uint8_t* image, uint32_t& offset);
+  Image* image;
 private:
   uint32_t _width;
   uint32_t _height;
-  Image* image;
+
   std::vector<Object*> objects;
 };
 

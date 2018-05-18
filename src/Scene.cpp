@@ -36,15 +36,14 @@ void Scene::render() {
   }
 }
 
+void Scene::add(Object* obj) {
+  this->objects.push_back(obj);
+}
+
 uint32_t Scene::width() {
   return this->_width;
 }
 
 uint32_t Scene::height() {
   return this->_height;
-}
-
-void Scene::getImageData(uint8_t* image, uint32_t& offset) {
-  image = this->image->buffer();
-  offset = this->image->bufferLength();
 }
