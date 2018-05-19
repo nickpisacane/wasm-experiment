@@ -22,9 +22,9 @@ bool Rect::outOfBounds(Image& image) {
 
 void Rect::draw(Image& image) {
   int x = fmax(0, this->position.x);
-  int xs = this->position.x + this->width;
+  int xs = fmin(this->position.x + this->width, image.width());
   int y = fmax(0, this->position.y);
-  int ys = this->position.y + this->height;
+  int ys = fmin(this->position.y + this->height, image.height());
 
 
   for (int i = x; i < xs; i++) {
