@@ -9,7 +9,7 @@ Object::Object(int x, int y) :
   acceleration(0, 0) {
 }
 
-void Object::update() {
+void Object::update(Scene& s) {
   this->velocity.add(this->acceleration);
   this->position.add(this->velocity);
 }

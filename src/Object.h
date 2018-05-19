@@ -4,6 +4,8 @@
 #include "Image.h"
 #include "Vector2.h"
 
+class Scene;
+
 class Object {
 public:
   Object();
@@ -13,7 +15,7 @@ public:
   Vector2 velocity;
   Vector2 acceleration;
 
-  virtual void update();
+  virtual void update(Scene&);
 
   virtual bool outOfBounds(Image&) = 0;
   virtual void draw(Image&) = 0;
