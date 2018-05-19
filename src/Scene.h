@@ -6,6 +6,7 @@
 
 #include "Image.h"
 #include "Object.h"
+#include "Rect.h"
 
 class Scene {
 public:
@@ -17,11 +18,13 @@ public:
   void add(Object* obj);
   uint32_t width();
   uint32_t height();
+  void setBackgroundColor(uint32_t bg);
 
   Image* image;
 private:
   uint32_t _width;
   uint32_t _height;
+  Rect _bg;
 
   std::vector<Object*> objects;
 };

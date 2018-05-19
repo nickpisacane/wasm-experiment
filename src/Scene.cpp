@@ -7,6 +7,7 @@
 
 Scene::Scene(uint32_t width, uint32_t height) :
   image(nullptr),
+  _bg(0, 0, width, height, 0xffffffff),
   objects() {
 
   this->resize(width, height);
@@ -30,8 +31,9 @@ void Scene::resize(uint32_t width, uint32_t height) {
 }
 
 void Scene::render() {
+  this->_bg.draw(*this->image);
   for (Object* obj : this->objects) {
-    obj->update();
+    obj->update(*this);
     obj->draw(*this->image);
   }
 }
@@ -46,4 +48,8 @@ uint32_t Scene::width() {
 
 uint32_t Scene::height() {
   return this->_height;
+}
+
+void Scene::setBackgroundColor(uint32_t bg) {
+  this->_bg.color = bg;
 }
