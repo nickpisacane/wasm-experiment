@@ -1,13 +1,13 @@
 #include <emscripten.h>
 
 #include "Scene.h"
-#include "Rect.h"
+#include "BouncingRect.h"
+#include "Vector2.h"
 
-Scene scene(50, 50);
+Scene scene(600, 400);
 
 EM_JS(void, js_init_image_data, (uint8_t* p, int o, int w, int h), {
   var arr = new Uint8ClampedArray(Module.wasmMemory.buffer, p, o);
-  console.log(p);
   window.$imageData = new ImageData(arr, w, h);
 });
 
@@ -16,7 +16,10 @@ EM_JS(void, js_render_image_data, (), {
 });
 
 void initScene() {
-  scene.add(new Rect(0, 0, 10, 10, 0x00ff00ff));
+  scene.setBackgroundColor(0x1b1b1cff);
+  scene.add(new BouncingRect(400, 100, 100, 100, 0x76ff03ff, Vector2(-5, -2)));
+  scene.add(new BouncingRect(10, 10, 50, 50, 0x304ffeff, Vector2(-4, 3)));
+  scene.add(new BouncingRect(20, 20, 25, 25, 0xdd2c00ff, Vector2(-3, -6)));
   js_init_image_data(
     scene.image->buffer(),
     scene.image->bufferLength(),
